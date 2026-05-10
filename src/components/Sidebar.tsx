@@ -42,8 +42,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
       )}>
       <div className="mb-8 flex items-center gap-3 border-b border-slate-100 pb-6 px-2 dark:border-slate-800">
         <div className="flex justify-center items-center h-10 w-10 overflow-hidden">
-          <img src="/logo.png" alt="App Logo" className="w-full h-full object-contain" onError={(e) => {
-            (e.target as HTMLImageElement).src = 'https://cdn-icons-png.flaticon.com/512/1611/1611154.png';
+          <img src="https://drive.google.com/uc?export=view&id=1m4VIRiGBDxxIbO7BQBc2Aoi-OYvc0utG" alt="App Logo" className="w-full h-full object-contain" onError={(e) => {
+            (e.target as HTMLImageElement).src = 'https://drive.google.com/uc?export=view&id=1m4VIRiGBDxxIbO7BQBc2Aoi-OYvc0utG';
           }} />
         </div>
         <h1 className="text-lg font-extrabold tracking-tight text-slate-800 dark:text-white">SMARTBILL</h1>

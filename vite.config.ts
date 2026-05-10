@@ -22,17 +22,17 @@ export default defineConfig(({mode}) => {
           display: 'standalone',
           icons: [
             {
-              src: 'https://cdn-icons-png.flaticon.com/512/1611/1611154.png',
+              src: 'https://drive.google.com/uc?export=view&id=1m4VIRiGBDxxIbO7BQBc2Aoi-OYvc0utG',
               sizes: '192x192',
               type: 'image/png'
             },
             {
-              src: 'https://cdn-icons-png.flaticon.com/512/1611/1611154.png',
+              src: 'https://drive.google.com/uc?export=view&id=1m4VIRiGBDxxIbO7BQBc2Aoi-OYvc0utG',
               sizes: '512x512',
               type: 'image/png'
             },
             {
-              src: 'https://cdn-icons-png.flaticon.com/512/1611/1611154.png',
+              src: 'https://drive.google.com/uc?export=view&id=1m4VIRiGBDxxIbO7BQBc2Aoi-OYvc0utG',
               sizes: '512x512',
               type: 'image/png',
               purpose: 'any maskable'
