@@ -1,0 +1,17 @@
+{
+  "name": "Bill Generator",
+  "short_name": "BillGen",
+  "description": "Professional Bill and Invoice Generator",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/1611/1611154.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
