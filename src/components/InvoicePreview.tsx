@@ -62,10 +62,10 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice, onBack 
         </div>
       </div>
 
-      <div className="overflow-x-auto pb-8">
-        <div id="printable-invoice" className="a4-container mx-auto bg-white shadow-2xl text-black relative p-6 font-sans flex flex-col min-w-[794px] print:shadow-none print:p-0">
+      <div className="overflow-x-auto pb-8 print:overflow-visible">
+        <div id="printable-invoice" className="a4-container mx-auto bg-white shadow-2xl text-black relative p-6 font-sans flex flex-col min-w-[794px] print:min-w-0 print:w-full print:shadow-none print:p-0">
         <div className="border-2 border-[#1e3a8a] relative mt-4 flex-1 flex flex-col">
-          <div className="absolute -top-[14px] left-1/2 -translate-x-1/2 pointer-events-none">
+          <div className="absolute -top-[14px] inset-x-0 flex justify-center pointer-events-none">
             <div className="bg-[#1e3a8a] text-white px-8 py-1 text-sm font-bold tracking-widest uppercase whitespace-nowrap text-center shadow-sm pointer-events-auto">
               {invoice.invoiceTitle || 'CHALLAN'}
             </div>

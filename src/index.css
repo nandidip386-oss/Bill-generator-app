@@ -103,10 +103,11 @@
   }
   @page {
     size: A4 portrait;
-    margin: 10mm;
+    margin: 5mm !important;
   }
   .a4-container {
     width: 100% !important;
+    min-width: 100% !important;
     min-height: auto !important;
     max-height: none !important;
     padding: 0 !important;
