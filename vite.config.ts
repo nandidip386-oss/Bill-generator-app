@@ -19,7 +19,7 @@ export default defineConfig(({mode}) => {
         devOptions: {
           enabled: true
         },
-        includeAssets: ['logo.jpg'],
+        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
         manifest: {
           name: 'Bill Generator',
           short_name: 'BillGen',
@@ -30,19 +30,19 @@ export default defineConfig(({mode}) => {
           start_url: '/',
           icons: [
             {
-              src: '/logo.jpg',
+              src: 'https://cdn-icons-png.flaticon.com/512/1611/1611154.png',
               sizes: '192x192',
-              type: 'image/jpeg'
+              type: 'image/png'
             },
             {
-              src: '/logo.jpg',
+              src: 'https://cdn-icons-png.flaticon.com/512/1611/1611154.png',
               sizes: '512x512',
-              type: 'image/jpeg'
+              type: 'image/png'
             },
             {
-              src: '/logo.jpg',
+              src: 'https://cdn-icons-png.flaticon.com/512/1611/1611154.png',
               sizes: '512x512',
-              type: 'image/jpeg',
+              type: 'image/png',
               purpose: 'any maskable'
             }
           ]

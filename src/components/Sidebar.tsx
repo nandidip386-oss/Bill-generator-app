@@ -84,10 +84,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
         isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
       )}>
       <div className="mb-8 flex items-center gap-3 border-b border-slate-100 pb-6 px-2 dark:border-slate-800">
-        <div className="flex justify-center items-center h-10 w-10 overflow-hidden">
-          <img src="/logo.jpg" alt="App Logo" className="w-full h-full object-contain" onError={(e) => {
-            (e.target as HTMLImageElement).src = '/logo.jpg';
-          }} />
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-white shadow-sm">
+          <FilePlus size={18} />
         </div>
         <h1 className="text-lg font-extrabold tracking-tight text-slate-800 dark:text-white">SMARTBILL</h1>
       </div>
