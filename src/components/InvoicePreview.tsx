@@ -35,7 +35,7 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice, onBack 
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 p-8 dark:bg-slate-950">
+    <div className="min-h-screen bg-slate-50 p-8 dark:bg-slate-950 print:bg-white print:p-0">
       <div className="no-print mb-8 mx-auto max-w-4xl flex items-center justify-between">
         <button
           onClick={onBack}
@@ -62,8 +62,8 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice, onBack 
         </div>
       </div>
 
-      <div className="overflow-x-auto pb-8 print:overflow-visible">
-        <div id="printable-invoice" className="a4-container mx-auto bg-white shadow-2xl text-black relative p-[10mm] font-sans flex flex-col print:shadow-none print:m-0 print:w-[210mm] print:h-[297mm] print:min-w-0 print:max-w-none">
+      <div className="overflow-x-auto pb-8 print:pb-0 print:overflow-visible">
+        <div id="printable-invoice" className="a4-container mx-auto bg-white shadow-2xl text-black relative p-[10mm] font-sans flex flex-col print:shadow-none print:m-0 print:w-[210mm] print:h-[297mm] print:min-w-0 print:max-w-none print:pt-[20mm]">
           <div className="flex-1 flex flex-col">
             <div className="flex justify-center relative z-10 w-full">
               <div className="bg-[#1e3a8a] text-white px-8 py-1 text-sm font-bold tracking-widest uppercase text-center shadow-sm">
