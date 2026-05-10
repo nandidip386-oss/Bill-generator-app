@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { LayoutDashboard, FilePlus, Files, Palette, Settings, Sun, Moon, Download, Upload, Trash2 } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -19,6 +19,49 @@ export const Sidebar: React.FC<SidebarProps> = ({
   isDarkMode, 
   toggleDarkMode 
 }) => {
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [isInstallable, setIsInstallable] = useState(false);
+
+  useEffect(() => {
+    // Check if it already fired
+    if ((window as any).deferredPrompt) {
+      setDeferredPrompt((window as any).deferredPrompt);
+      setIsInstallable(true);
+    }
+
+    const handleBeforeInstallPrompt = (e: any) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setIsInstallable(true);
+    };
+
+    const handleCustomInstallableEvent = () => {
+      if ((window as any).deferredPrompt) {
+        setDeferredPrompt((window as any).deferredPrompt);
+        setIsInstallable(true);
+      }
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('app-installable', handleCustomInstallableEvent);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('app-installable', handleCustomInstallableEvent);
+    };
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) return;
+    // Show the install prompt
+    deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    const { outcome } = await deferredPrompt.userChoice;
+    // We've used the prompt, and can't use it again, throw it away
+    setDeferredPrompt(null);
+    setIsInstallable(false);
+  };
+
   const menuItems = [
     { id: 'dashboard', icon: LayoutDashboard, label: 'Dashboard' },
     { id: 'new-invoice', icon: FilePlus, label: 'New Invoice' },
@@ -41,7 +84,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
       )}>
       <div className="mb-8 flex items-center gap-3 border-b border-slate-100 pb-6 px-2 dark:border-slate-800">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-white">
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-white shadow-sm">
           <FilePlus size={18} />
         </div>
         <h1 className="text-lg font-extrabold tracking-tight text-slate-800 dark:text-white">SMARTBILL</h1>
@@ -65,6 +108,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </button>
         ))}
       </nav>
+
+      {isInstallable && (
+        <div className="mt-8 px-3">
+          <button
+            onClick={handleInstallClick}
+            className="w-full flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-4 py-3 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-indigo-700 shadow-md"
+          >
+            <Download size={16} />
+            Install App
+          </button>
+        </div>
+      )}
 
     </aside>
     </>
