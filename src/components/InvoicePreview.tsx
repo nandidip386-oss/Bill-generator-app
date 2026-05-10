@@ -63,7 +63,7 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice, onBack 
       </div>
 
       <div className="overflow-x-auto pb-8">
-        <div id="printable-invoice" className="a4-container mx-auto bg-white shadow-2xl text-black relative p-6 font-sans flex flex-col min-w-[794px]">
+        <div id="printable-invoice" className="a4-container mx-auto bg-white shadow-2xl text-black relative p-6 font-sans flex flex-col min-w-[794px] print:p-0">
         <div className="border-2 border-[#1e3a8a] relative mt-4 flex-1 flex flex-col">
           <div className="absolute -top-[14px] inset-x-0 flex justify-center pointer-events-none">
             <div className="bg-[#1e3a8a] text-white px-8 py-1 text-sm font-bold tracking-widest uppercase whitespace-nowrap text-center shadow-sm pointer-events-auto">
@@ -74,7 +74,7 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice, onBack 
           {/* Header Row: Company | Customer */}
           <div className="grid grid-cols-2 border-b-2 border-[#1e3a8a]">
              {/* Left (Company) */}
-             <div className="p-3 border-r-2 border-[#1e3a8a]">
+             <div className="p-4 border-r-2 border-[#1e3a8a]">
                <h2 className="text-xl font-bold text-red-600 uppercase mb-1 tracking-wider">{invoice.companyDetails.name || 'COMPANY NAME'}</h2>
                {invoice.companyDetails.subtitle && <p className="text-xs font-bold text-emerald-700 uppercase mb-2 tracking-wide">{invoice.companyDetails.subtitle}</p>}
                <p className="text-xs font-medium uppercase leading-relaxed whitespace-pre-line mb-1">{invoice.companyDetails.address}</p>
@@ -89,7 +89,7 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice, onBack 
                </div>
              </div>
              {/* Right (Customer) */}
-             <div className="p-3 bg-[#f8fafc] flex flex-col">
+             <div className="p-4 bg-[#f8fafc] flex flex-col">
                <p className="text-xs font-medium uppercase text-slate-600">Bill to :</p>
                <h3 className="text-lg font-bold text-[#1e3a8a] uppercase mt-2 mb-1 tracking-wide">Name: {invoice.customerDetails.name}</h3>
                <p className="text-xs font-medium uppercase leading-relaxed whitespace-pre-line mb-3 tracking-wide">Address : {invoice.customerDetails.address}</p>
@@ -107,25 +107,25 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice, onBack 
 
           {/* Sub Header: Bill No | Date */}
           <div className="grid grid-cols-2 border-b-2 border-[#1e3a8a] bg-[#f8fafc]">
-            <div className="p-2 px-3 text-sm font-bold text-slate-800 border-r-2 border-[#1e3a8a]">
+             <div className="p-2 px-4 text-sm font-bold text-slate-800 border-r-2 border-[#1e3a8a]">
               Bill No : {invoice.invoiceNumber}
             </div>
-            <div className="p-2 px-3 text-sm font-bold text-slate-800">
+            <div className="p-2 px-4 text-sm font-bold text-slate-800">
               Date: {invoice.date}
             </div>
           </div>
 
           {/* Table */}
-          <table className="w-full text-center border-collapse table-fixed">
+          <table className="w-full text-center border-collapse">
             <thead>
               <tr className="border-b-2 border-[#1e3a8a] text-[10px] font-bold bg-slate-100 uppercase tracking-wider text-slate-700">
-                <th className="p-1 border-r-2 border-[#1e3a8a] w-10 py-3">SL.NO</th>
-                <th className="p-1 border-r-2 border-[#1e3a8a] w-20 py-3">HSN Code</th>
-                <th className="p-1 border-r-2 border-[#1e3a8a] w-14 py-3">No</th>
+                <th className="p-1 border-r-2 border-[#1e3a8a] w-[40px] py-3">SL.</th>
+                <th className="p-1 border-r-2 border-[#1e3a8a] w-[80px] py-3">HSN Code</th>
+                <th className="p-1 border-r-2 border-[#1e3a8a] w-[60px] py-3">No</th>
                 <th className="p-1 border-r-2 border-[#1e3a8a] py-3">DESCRIPTION</th>
-                <th className="p-1 border-r-2 border-[#1e3a8a] w-24 py-3">Quantity</th>
-                <th className="p-1 border-r-2 border-[#1e3a8a] w-20 py-3 text-right pr-2">RATE</th>
-                <th className="p-1 w-24 py-3 text-right pr-2">AMOUNT</th>
+                <th className="p-1 border-r-2 border-[#1e3a8a] w-[100px] py-3">Quantity</th>
+                <th className="p-1 border-r-2 border-[#1e3a8a] w-[80px] py-3 text-right pr-2">RATE</th>
+                <th className="p-1 w-[110px] py-3 text-right pr-2">AMOUNT</th>
               </tr>
             </thead>
             <tbody>
@@ -133,16 +133,16 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice, onBack 
               {Array.from({ length: Math.max(20, invoice.items.length) }).map((_, i) => {
                 const item = invoice.items[i];
                 return (
-                  <tr key={i} className="text-[11px] border-b border-slate-300 last:border-b-0 even:bg-[#f8fafc]">
-                    <td className="p-1 border-r-2 border-[#1e3a8a] h-7 font-bold text-slate-600 truncate">{item ? i + 1 + '.' : ''}</td>
-                    <td className="p-1 border-r-2 border-[#1e3a8a] font-medium text-slate-700 truncate">{item?.hsn || ''}</td>
-                    <td className="p-1 border-r-2 border-[#1e3a8a] font-medium text-slate-700 truncate">{item?.itemNo || ''}</td>
-                    <td className="p-1 border-r-2 border-[#1e3a8a] font-bold uppercase text-slate-800 truncate text-center">{item?.description || ''}</td>
-                    <td className="p-1 border-r-2 border-[#1e3a8a] font-bold text-[#1e3a8a] truncate">
+                  <tr key={i} className="text-[11px] border-b border-slate-200 last:border-b-0 even:bg-[#f8fafc]">
+                    <td className="p-1 border-r-2 border-[#1e3a8a] h-7 font-bold text-slate-600">{item ? i + 1 + '.' : ''}</td>
+                    <td className="p-1 border-r-2 border-[#1e3a8a] font-medium text-slate-700">{item?.hsn || ''}</td>
+                    <td className="p-1 border-r-2 border-[#1e3a8a] font-medium text-slate-700">{item?.itemNo || ''}</td>
+                    <td className="p-1 border-r-2 border-[#1e3a8a] font-bold uppercase text-slate-800 px-2">{item?.description || ''}</td>
+                    <td className="p-1 border-r-2 border-[#1e3a8a] font-bold text-[#1e3a8a] whitespace-nowrap">
                       {item ? `${item.dozen || 0}D ${item.pieces || 0}P` : ''}
                     </td>
-                    <td className="p-1 border-r-2 border-[#1e3a8a] font-medium text-slate-700 truncate text-right pr-2">{item ? (Number(item.price).toFixed(2)) : ''}</td>
-                    <td className="p-1 font-bold text-slate-800 truncate text-right pr-2">{item ? formatCurrency(item.amount).replace(/[^0-9.,]/g, '').replace('₹', '').trim() : ''}</td>
+                    <td className="p-1 border-r-2 border-[#1e3a8a] font-medium text-slate-700 text-right pr-2">{item ? (Number(item.price).toFixed(2)) : ''}</td>
+                    <td className="p-1 font-bold text-slate-800 text-right pr-2 whitespace-nowrap">{item ? formatCurrency(item.amount).replace(/[^0-9.,]/g, '').replace('₹', '').trim() : ''}</td>
                   </tr>
                 );
               })}
@@ -159,24 +159,24 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice, onBack 
              </div>
              
              {/* Totals */}
-             <div className="w-[300px]">
-               <div className="grid grid-cols-2 border-b border-[#1e3a8a80] bg-slate-50">
-                 <div className="p-3 text-sm font-bold text-slate-600 border-r-2 border-[#1e3a8a]">TOTAL</div>
-                 <div className="p-3 text-sm font-bold text-right text-slate-800">{formatCurrency(invoice.totalAmount).replace(/[^0-9.,]/g, '').trim()}</div>
+             <div className="w-[320px]">
+               <div className="grid grid-cols-[1fr_130px] border-b border-[#1e3a8a80] bg-slate-50">
+                 <div className="p-3 text-sm font-bold text-slate-600 border-r-2 border-[#1e3a8a] uppercase tracking-wider">TOTAL</div>
+                 <div className="p-3 text-sm font-bold text-right text-slate-800 whitespace-nowrap">{formatCurrency(invoice.totalAmount).replace(/[^0-9.,]/g, '').trim()}</div>
                </div>
-               <div className="grid grid-cols-2 border-b-2 border-[#1e3a8a] bg-slate-50">
-                 <div className="p-3 text-sm font-bold text-slate-600 border-r-2 border-[#1e3a8a]">TDS</div>
-                 <div className="p-3 text-sm font-bold text-right text-slate-800">{formatCurrency(invoice.tds).replace(/[^0-9.,]/g, '').trim()}</div>
+               <div className="grid grid-cols-[1fr_130px] border-b-2 border-[#1e3a8a] bg-slate-50">
+                 <div className="p-3 text-sm font-bold text-slate-600 border-r-2 border-[#1e3a8a] uppercase tracking-wider">TDS</div>
+                 <div className="p-3 text-sm font-bold text-right text-slate-800 whitespace-nowrap">{formatCurrency(invoice.tds).replace(/[^0-9.,]/g, '').trim()}</div>
                </div>
-               <div className="grid grid-cols-2 bg-[#1e3a8a1a]">
-                 <div className="p-3 text-sm font-black uppercase text-slate-800 border-r-2 border-[#1e3a8a]">GRAND TOTAL</div>
-                 <div className="p-3 text-sm font-black text-right text-slate-900">{formatCurrency(invoice.grandTotal).replace(/[^0-9.,]/g, '').trim()}</div>
+               <div className="grid grid-cols-[1fr_130px] bg-[#1e3a8a] bg-opacity-[0.03]">
+                 <div className="p-3 text-sm font-black uppercase text-[#1e3a8a] border-r-2 border-[#1e3a8a] tracking-wider">GRAND TOTAL</div>
+                 <div className="p-3 text-sm font-black text-right text-[#1e3a8a] whitespace-nowrap border-b border-transparent">{formatCurrency(invoice.grandTotal).replace(/[^0-9.,]/g, '').trim()}</div>
                </div>
              </div>
           </div>
 
           {/* Footer / Bank / Signature */}
-          <div className="p-4 flex justify-between border-t-2 border-[#1e3a8a] bg-[#f1f5f9]">
+          <div className="p-4 flex justify-between border-t-2 border-[#1e3a8a] bg-slate-50">
             <div className="text-xs font-medium space-y-[2px] text-slate-800">
               <p className="font-black uppercase tracking-widest text-[#1e3a8a] mb-2">:BANK DETAILS:</p>
               <p><span className="text-slate-500">Bank Name:</span> {invoice.bankDetails?.bankName}</p>
