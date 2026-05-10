@@ -111,12 +111,12 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice, onBack 
               Bill No : {invoice.invoiceNumber}
             </div>
             <div className="p-2 px-4 text-sm font-bold text-slate-800">
-              Date: {invoice.date}
+              Date: {invoice.date ? invoice.date.split('-').reverse().join('-') : ''}
             </div>
           </div>
 
           {/* Table */}
-          <table className="w-full text-center border-collapse">
+          <table className="w-full text-center border-collapse border-b-2 border-[#1e3a8a]">
             <thead>
               <tr className="border-b-2 border-[#1e3a8a] text-[10px] font-bold bg-slate-100 uppercase tracking-wider text-slate-700">
                 <th className="p-1 border-r-2 border-[#1e3a8a] w-[40px] py-3">SL.</th>
@@ -133,7 +133,7 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice, onBack 
               {Array.from({ length: Math.max(20, invoice.items.length) }).map((_, i) => {
                 const item = invoice.items[i];
                 return (
-                  <tr key={i} className="text-[11px] border-b border-slate-200 last:border-b-0 even:bg-[#f8fafc]">
+                  <tr key={i} className="text-[11px] border-b border-[#1e3a8a] last:border-b-0 even:bg-[#f8fafc]">
                     <td className="p-1 border-r-2 border-[#1e3a8a] h-7 font-bold text-slate-600">{item ? i + 1 + '.' : ''}</td>
                     <td className="p-1 border-r-2 border-[#1e3a8a] font-medium text-slate-700">{item?.hsn || ''}</td>
                     <td className="p-1 border-r-2 border-[#1e3a8a] font-medium text-slate-700">{item?.itemNo || ''}</td>
