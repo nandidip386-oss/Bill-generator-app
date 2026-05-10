@@ -103,10 +103,7 @@
   }
   @page {
     size: A4 portrait;
-    margin-top: 10mm !important;
-    margin-bottom: 0 !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin: 0 !important;
   }
 }
 
