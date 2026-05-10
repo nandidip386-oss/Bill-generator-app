@@ -103,18 +103,7 @@
   }
   @page {
     size: A4 portrait;
-    margin: 5mm !important;
-  }
-  .a4-container {
-    width: 100% !important;
-    min-width: 100% !important;
-    min-height: auto !important;
-    max-height: none !important;
-    padding: 0 !important;
     margin: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
-    overflow: visible !important;
   }
 }
 
