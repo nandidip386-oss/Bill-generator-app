@@ -12,13 +12,6 @@ export default defineConfig(({mode}) => {
       tailwindcss(),
       VitePWA({
         registerType: 'autoUpdate',
-        injectRegister: 'auto',
-        workbox: {
-          globPatterns: ['**/*.{js,css,html,ico,jpg,svg}']
-        },
-        devOptions: {
-          enabled: true
-        },
         includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
         manifest: {
           name: 'Bill Generator',
@@ -27,7 +20,6 @@ export default defineConfig(({mode}) => {
           theme_color: '#4f46e5',
           background_color: '#ffffff',
           display: 'standalone',
-          start_url: '/',
           icons: [
             {
               src: 'https://cdn-icons-png.flaticon.com/512/1611/1611154.png',
