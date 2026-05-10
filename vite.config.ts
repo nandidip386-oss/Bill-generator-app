@@ -12,7 +12,10 @@ export default defineConfig(({mode}) => {
       tailwindcss(),
       VitePWA({
         registerType: 'autoUpdate',
-        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
+        devOptions: {
+          enabled: true
+        },
+        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg', 'logo.png'],
         manifest: {
           name: 'Bill Generator',
           short_name: 'BillGen',
@@ -22,17 +25,17 @@ export default defineConfig(({mode}) => {
           display: 'standalone',
           icons: [
             {
-              src: 'https://drive.google.com/uc?export=view&id=1m4VIRiGBDxxIbO7BQBc2Aoi-OYvc0utG',
+              src: '/logo.png',
               sizes: '192x192',
               type: 'image/png'
             },
             {
-              src: 'https://drive.google.com/uc?export=view&id=1m4VIRiGBDxxIbO7BQBc2Aoi-OYvc0utG',
+              src: '/logo.png',
               sizes: '512x512',
               type: 'image/png'
             },
             {
-              src: 'https://drive.google.com/uc?export=view&id=1m4VIRiGBDxxIbO7BQBc2Aoi-OYvc0utG',
+              src: '/logo.png',
               sizes: '512x512',
               type: 'image/png',
               purpose: 'any maskable'
