@@ -168,7 +168,7 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice, onBack 
                  <div className="p-3 text-sm font-bold text-slate-600 border-r-2 border-[#1e3a8a] uppercase tracking-wider">TDS</div>
                  <div className="p-3 text-sm font-bold text-right text-slate-800 whitespace-nowrap">{formatCurrency(invoice.tds).replace(/[^0-9.,]/g, '').trim()}</div>
                </div>
-               <div className="grid grid-cols-[1fr_130px] bg-[#1e3a8a] bg-opacity-[0.03]">
+               <div className="grid grid-cols-[1fr_130px] bg-white">
                  <div className="p-3 text-sm font-black uppercase text-[#1e3a8a] border-r-2 border-[#1e3a8a] tracking-wider">GRAND TOTAL</div>
                  <div className="p-3 text-sm font-black text-right text-[#1e3a8a] whitespace-nowrap border-b border-transparent">{formatCurrency(invoice.grandTotal).replace(/[^0-9.,]/g, '').trim()}</div>
                </div>
