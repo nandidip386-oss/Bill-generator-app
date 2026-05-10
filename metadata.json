@@ -1,0 +1,6 @@
+{
+  "name": "Smart Bill Generator",
+  "description": "A professional GST-style invoice generator with custom template designer, local storage persistence, and A4 print optimization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
