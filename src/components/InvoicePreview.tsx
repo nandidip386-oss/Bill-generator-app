@@ -133,8 +133,9 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice, onBack 
               {/* Render items and empty rows */}
               {Array.from({ length: Math.max(20, invoice.items.length) }).map((_, i) => {
                 const item = invoice.items[i];
+                const hideInPrint = !item && i >= 18;
                 return (
-                  <tr key={i} className="text-[11px] border-b border-[#1e3a8a] last:border-b-0 even:bg-[#f8fafc]">
+                  <tr key={i} className={`text-[11px] border-b border-[#1e3a8a] last:border-b-0 even:bg-[#f8fafc] ${hideInPrint ? 'print:hidden' : ''}`}>
                     <td className="p-1 border-r-2 border-[#1e3a8a] h-7 font-bold text-slate-600">{item ? i + 1 + '.' : ''}</td>
                     <td className="p-1 border-r-2 border-[#1e3a8a] font-medium text-slate-700">{item?.hsn || ''}</td>
                     <td className="p-1 border-r-2 border-[#1e3a8a] font-medium text-slate-700">{item?.itemNo || ''}</td>
