@@ -23,19 +23,31 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const [isInstallable, setIsInstallable] = useState(false);
 
   useEffect(() => {
+    // Check if it already fired
+    if ((window as any).deferredPrompt) {
+      setDeferredPrompt((window as any).deferredPrompt);
+      setIsInstallable(true);
+    }
+
     const handleBeforeInstallPrompt = (e: any) => {
-      // Prevent the mini-infobar from appearing on mobile
       e.preventDefault();
-      // Stash the event so it can be triggered later.
       setDeferredPrompt(e);
-      // Update UI notify the user they can install the PWA
       setIsInstallable(true);
     };
 
+    const handleCustomInstallableEvent = () => {
+      if ((window as any).deferredPrompt) {
+        setDeferredPrompt((window as any).deferredPrompt);
+        setIsInstallable(true);
+      }
+    };
+
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('app-installable', handleCustomInstallableEvent);
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('app-installable', handleCustomInstallableEvent);
     };
   }, []);
 
@@ -73,8 +85,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
       )}>
       <div className="mb-8 flex items-center gap-3 border-b border-slate-100 pb-6 px-2 dark:border-slate-800">
         <div className="flex justify-center items-center h-10 w-10 overflow-hidden">
-          <img src="/logo.png" alt="App Logo" className="w-full h-full object-contain" onError={(e) => {
-            (e.target as HTMLImageElement).src = '/logo.png';
+          <img src="/logo.jpg" alt="App Logo" className="w-full h-full object-contain" onError={(e) => {
+            (e.target as HTMLImageElement).src = '/logo.jpg';
           }} />
         </div>
         <h1 className="text-lg font-extrabold tracking-tight text-slate-800 dark:text-white">SMARTBILL</h1>

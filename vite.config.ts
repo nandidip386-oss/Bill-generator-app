@@ -14,12 +14,12 @@ export default defineConfig(({mode}) => {
         registerType: 'autoUpdate',
         injectRegister: 'auto',
         workbox: {
-          globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+          globPatterns: ['**/*.{js,css,html,ico,jpg,svg}']
         },
         devOptions: {
           enabled: true
         },
-        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg', 'logo.png'],
+        includeAssets: ['logo.jpg'],
         manifest: {
           name: 'Bill Generator',
           short_name: 'BillGen',
@@ -30,19 +30,19 @@ export default defineConfig(({mode}) => {
           start_url: '/',
           icons: [
             {
-              src: '/logo.png',
+              src: '/logo.jpg',
               sizes: '192x192',
-              type: 'image/png'
+              type: 'image/jpeg'
             },
             {
-              src: '/logo.png',
+              src: '/logo.jpg',
               sizes: '512x512',
-              type: 'image/png'
+              type: 'image/jpeg'
             },
             {
-              src: '/logo.png',
+              src: '/logo.jpg',
               sizes: '512x512',
-              type: 'image/png',
+              type: 'image/jpeg',
               purpose: 'any maskable'
             }
           ]
