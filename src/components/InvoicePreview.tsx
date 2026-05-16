@@ -63,7 +63,7 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice, onBack 
       </div>
 
       <div className="overflow-x-auto pb-8 print:pb-0 print:overflow-visible">
-        <div id="printable-invoice" className="a4-container mx-auto bg-white shadow-2xl text-black relative p-[10mm] font-sans flex flex-col print:shadow-none print:m-0 print:w-[210mm] print:h-[297mm] print:pt-[15mm] print:min-h-0 print:max-w-none">
+        <div id="printable-invoice" className="a4-container mx-auto bg-white shadow-2xl text-black relative p-[10mm] font-sans flex flex-col print:shadow-none print:m-0 print:w-[210mm] print:h-auto print:pt-[15mm] print:min-h-0 print:max-w-none">
           <div className="flex-1 flex flex-col">
             <div className="flex justify-center relative z-10 w-full">
               <div className="bg-[#1e3a8a] text-white px-8 py-1 text-sm font-bold tracking-widest uppercase text-center shadow-sm">
@@ -131,9 +131,9 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice, onBack 
             </thead>
             <tbody>
               {/* Render items and empty rows */}
-              {Array.from({ length: Math.max(20, invoice.items.length) }).map((_, i) => {
+              {Array.from({ length: Math.max(16, invoice.items.length) }).map((_, i) => {
                 const item = invoice.items[i];
-                const hideInPrint = !item && i >= 18;
+                const hideInPrint = !item && i >= 13;
                 return (
                   <tr key={i} className={`text-[11px] border-b border-[#1e3a8a] last:border-b-0 even:bg-[#f8fafc] ${hideInPrint ? 'print:hidden' : ''}`}>
                     <td className="p-1 border-r-2 border-[#1e3a8a] h-7 font-bold text-slate-600">{item ? i + 1 + '.' : ''}</td>
