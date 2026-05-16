@@ -131,9 +131,9 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice, onBack 
             </thead>
             <tbody>
               {/* Render items and empty rows */}
-              {Array.from({ length: Math.max(12, invoice.items.length) }).map((_, i) => {
+              {Array.from({ length: Math.max(16, invoice.items.length) }).map((_, i) => {
                 const item = invoice.items[i];
-                const hideInPrint = !item && i >= 10;
+                const hideInPrint = !item && i >= 13;
                 return (
                   <tr key={i} className={`text-[11px] border-b border-[#1e3a8a] last:border-b-0 even:bg-[#f8fafc] ${hideInPrint ? 'print:hidden' : ''}`}>
                     <td className="p-1 border-r-2 border-[#1e3a8a] h-7 font-bold text-slate-600">{item ? i + 1 + '.' : ''}</td>
@@ -151,32 +151,34 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice, onBack 
             </tbody>
           </table>
 
+          <div className="flex-1"></div>
+
           {/* Totals & Words */}
-          <div className="grid grid-cols-[1fr_auto] border-t-2 border-[#1e3a8a]">
+          <div className="grid grid-cols-[1fr_auto] border-t-2 border-[#1e3a8a] mt-auto">
              {/* Words */}
-             <div className="p-3 print:p-2 flex items-start flex-col justify-between border-r-2 border-[#1e3a8a]">
+             <div className="p-4 flex items-start flex-col justify-between border-r-2 border-[#1e3a8a]">
                <p className="text-sm font-medium text-slate-800 leading-relaxed max-w-sm"><span className="text-slate-600">Rupees in words: </span>{numberToWords(invoice.grandTotal)}</p>
              </div>
              
              {/* Totals */}
              <div className="w-[320px]">
                <div className="grid grid-cols-[1fr_130px] border-b border-[#1e3a8a80] bg-slate-50">
-                 <div className="p-2 px-3 text-sm font-bold text-slate-600 border-r-2 border-[#1e3a8a] uppercase tracking-wider">TOTAL</div>
-                 <div className="p-2 px-3 text-sm font-bold text-right text-slate-800 whitespace-nowrap">{formatCurrency(invoice.totalAmount).replace(/[^0-9.,]/g, '').trim()}</div>
+                 <div className="p-3 text-sm font-bold text-slate-600 border-r-2 border-[#1e3a8a] uppercase tracking-wider">TOTAL</div>
+                 <div className="p-3 text-sm font-bold text-right text-slate-800 whitespace-nowrap">{formatCurrency(invoice.totalAmount).replace(/[^0-9.,]/g, '').trim()}</div>
                </div>
                <div className="grid grid-cols-[1fr_130px] border-b-2 border-[#1e3a8a] bg-slate-50">
-                 <div className="p-2 px-3 text-sm font-bold text-slate-600 border-r-2 border-[#1e3a8a] uppercase tracking-wider">TDS</div>
-                 <div className="p-2 px-3 text-sm font-bold text-right text-slate-800 whitespace-nowrap">{formatCurrency(invoice.tds).replace(/[^0-9.,]/g, '').trim()}</div>
+                 <div className="p-3 text-sm font-bold text-slate-600 border-r-2 border-[#1e3a8a] uppercase tracking-wider">TDS</div>
+                 <div className="p-3 text-sm font-bold text-right text-slate-800 whitespace-nowrap">{formatCurrency(invoice.tds).replace(/[^0-9.,]/g, '').trim()}</div>
                </div>
                <div className="grid grid-cols-[1fr_130px] bg-white">
-                 <div className="p-2 px-3 text-sm font-black uppercase text-[#1e3a8a] border-r-2 border-[#1e3a8a] tracking-wider">GRAND TOTAL</div>
-                 <div className="p-2 px-3 text-sm font-black text-right text-[#1e3a8a] whitespace-nowrap border-b border-transparent">{formatCurrency(invoice.grandTotal).replace(/[^0-9.,]/g, '').trim()}</div>
+                 <div className="p-3 text-sm font-black uppercase text-[#1e3a8a] border-r-2 border-[#1e3a8a] tracking-wider">GRAND TOTAL</div>
+                 <div className="p-3 text-sm font-black text-right text-[#1e3a8a] whitespace-nowrap border-b border-transparent">{formatCurrency(invoice.grandTotal).replace(/[^0-9.,]/g, '').trim()}</div>
                </div>
              </div>
           </div>
 
           {/* Footer / Bank / Signature */}
-          <div className="p-3 print:p-2 flex justify-between border-t-2 border-[#1e3a8a] bg-slate-50">
+          <div className="p-4 flex justify-between border-t-2 border-[#1e3a8a] bg-slate-50">
             <div className="text-xs font-medium space-y-[2px] text-slate-800">
               <p className="font-black uppercase tracking-widest text-[#1e3a8a] mb-2">:BANK DETAILS:</p>
               <p><span className="text-slate-500">Bank Name:</span> {invoice.bankDetails?.bankName}</p>
