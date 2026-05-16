@@ -156,8 +156,8 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ invoice, onBack 
           {/* Totals & Words */}
           <div className="grid grid-cols-[1fr_auto] border-t-2 border-[#1e3a8a] mt-auto">
              {/* Words */}
-             <div className="p-4 flex items-start flex-col justify-between border-r-2 border-[#1e3a8a]">
-               <p className="text-[11px] font-bold text-slate-800 leading-tight break-words">{numberToWords(invoice.grandTotal)}</p>
+             <div className="p-4 flex items-start flex-col justify-start border-r-2 border-[#1e3a8a]">
+               <p className="text-[13px] font-extrabold italic text-slate-800 leading-tight">Rupees in words: <span className="text-[11px] font-bold not-italic text-slate-700 ml-1">{numberToWords(invoice.grandTotal)}</span></p>
              </div>
              
              {/* Totals */}
